@@ -6,6 +6,8 @@ import (
 	"github.com/golang-jwt/jwt"
 )
 
+const API_CLIENT = "apiclient"
+
 // GenerateToken generates a new JWT token
 func GenerateToken(secrect []byte, issuer string) (token string, err error) {
 	// Create the Claims
