@@ -9,10 +9,11 @@ import (
 const API_CLIENT = "apiclient"
 
 // GenerateToken generates a new JWT token
-func GenerateToken(secrect []byte, issuer string) (token string, err error) {
+func GenerateToken(secrect []byte, issuer string, username string) (token string, err error) {
 	// Create the Claims
-	claims := &jwt.StandardClaims{
-		Issuer: issuer,
+	claims := jwt.MapClaims{
+		"username": username,
+		"iss":      issuer,
 	}
 
 	tokenWithClaim := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
